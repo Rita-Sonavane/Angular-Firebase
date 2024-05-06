@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-firebase": {
+    "Angular-Firebase": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-firebase:build:production"
+              "browserTarget": "Angular-Firebase:build:production"
             },
             "development": {
-              "browserTarget": "angular-firebase:build:development"
+              "browserTarget": "Angular-Firebase:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-firebase:build"
+            "browserTarget": "Angular-Firebase:build"
           }
         },
         "test": {
@@ -91,11 +91,18 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2,
+            "browserTarget": "Angular-Firebase:build:production"
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "78c419c1-0981-4838-9dec-be875bfd7d66"
+    "analytics": "07e1dccb-8d02-4aeb-9090-ba41df098d68"
   }
 }

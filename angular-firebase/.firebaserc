@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-firebase-336dc": {
+      "hosting": {
+        "Angular-Firebase": [
+          "angular-firebase-336dc"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-firebase-336dc"
+  }
+}
