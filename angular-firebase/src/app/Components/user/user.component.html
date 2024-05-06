@@ -1,0 +1,10 @@
+
+<div *ngFor="let user of users">
+    <h3>{{ user.name }}</h3>
+    <p>Email: {{ user.mail }}</p>
+    <p>Disabled: {{ user.disabled }}</p>
+    <p>Roles: {{ user.roles }}</p>
+    <button mat-raised-button color="primary" (click)="toggleDisabledStatus(user)">
+      {{ user.disabled ? 'Enable' : 'Disable' }}
+    </button>
+  </div>
