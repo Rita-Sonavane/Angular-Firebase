@@ -9,6 +9,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserComponent implements OnInit {
   users: User[] | any;
+  viewMode: 'grid' | 'list' = 'grid';
 
   constructor(private userService: UserService) { }
 
@@ -51,4 +52,8 @@ export class UserComponent implements OnInit {
     user.disabled = !user.disabled;
     this.userService.updateUser(user);
   }
+
+  toggleView(mode: 'grid' | 'list') {
+    this.viewMode = mode;
+}
 }
