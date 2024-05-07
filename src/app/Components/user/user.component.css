@@ -221,6 +221,13 @@ p {
     transition: all .3s;
 }
 
+.mat-raised-button:hover{
+    opacity: 0.9;
+    background: rgb(5, 214, 158);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+
+
 .u-role {
     border-radius: 50px;
     border-color: rgb(42, 172, 142);
