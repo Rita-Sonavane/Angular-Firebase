@@ -109,7 +109,7 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19) !important;
 }
 
-.mat-card-header-grid p {
+.mat-card-header-grid h4,p {
     font-size: .75rem;
     color: rgb(169, 169, 178) !important;
 }
