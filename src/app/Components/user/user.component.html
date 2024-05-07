@@ -1,14 +1,14 @@
 <div class="container">
-    <div class="header">
-        <div class="title">
-            <h3>{{ viewMode === 'grid' ? 'Grid View' : 'List View' }}</h3>
+    <div class="header row">
+        <div class="title col-sm-8">
+            <h3>Users List</h3>
         </div>
-        <div class="grid-icon">
+        <div class="grid-icon col-sm-4 d-flex justify-content-end align-items-center">
             <button mat-icon-button class="mat-icon-button" (click)="toggleView('grid')">
-                <mat-icon title="Grid View">grid_on</mat-icon>
+                <mat-icon title="Grid View" *ngIf="viewMode === 'list'">grid_on</mat-icon>
             </button>
             <button mat-icon-button class="mat-icon-button" (click)="toggleView('list')">
-                <mat-icon title="View List">view_list</mat-icon>
+                <mat-icon title="View List" *ngIf="viewMode === 'grid'">view_list</mat-icon>
             </button>
         </div>
     </div>
@@ -17,29 +17,37 @@
             <div class="main-container">
 
 
-                <div class="grid" *ngIf="viewMode === 'grid'">
-                <mat-card class="user-card-grid" *ngFor="let user of users">
-                    
-                    <mat-card-header class="mat-card-header-grid">
-                        <div mat-card-avatar class="user-avatar-grid" >{{ user.name.charAt(0) }}</div>
-                        <h4 class="mb-1">{{ user.name }}</h4>
-                        <p >{{ user.roles }}</p>
-                        <p class="mb-1">{{ user.mail }}</p>                       
-                        <p> {{ user.disabled ? 'Active' : 'Inactive' }}</p>
-                    </mat-card-header>
-                    <mat-card-content>
-                        <button mat-raised-button class="mat-raised-button"
-                                        (click)="toggleDisabledStatus(user)">
-                                        Update Status
-                        </button>
-                    </mat-card-content>
-                </mat-card>
-            </div>
+                <div class="grid col-sm-12" *ngIf="viewMode === 'grid'">
+                    <div class="row">
+                        <div class="col-md-4 mb-3" *ngFor="let user of users">
+                            <mat-card class="user-card-grid">
+                                <mat-card-header class="mat-card-header-grid">
+                                    <div mat-card-avatar class="user-avatar-grid">{{ user.name.charAt(0) }}</div>
+                                    <h4 class="mb-1">{{ user.name }}</h4>
+                                    <p>
+                                        <ng-container *ngFor="let role of user.roles; let i = index">
+                                            {{ role }}
+                                            <span *ngIf="i !== user.roles.length - 1">, </span>
+                                          </ng-container>
+                                      </p>
+                                    <p class="mb-1">{{ user.mail }}</p>                       
+                                    <p> {{ user.disabled ? 'Active' : 'Inactive' }}</p>
+                                </mat-card-header>
+                                <mat-card-content>
+                                    <button mat-raised-button class="mat-raised-button"
+                                            (click)="toggleDisabledStatus(user)">
+                                            Update Status
+                                    </button>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
                 
-            <div class="list" *ngIf="viewMode === 'list'">
-                    <mat-list *ngFor="let user of users">
-                        <mat-list-item>
-                            <mat-card class="user-card">
+                <div class="list col-sm-12" *ngIf="viewMode === 'list'">
+                    <mat-list>
+                        <mat-list-item *ngFor="let user of users">
+                            <mat-card class="user-card mt-4">
                                 <div class="user-info">
                                     <mat-card-header>
                                         <div class="details">
@@ -51,7 +59,12 @@
                                             </div>
 
                                             <div class="role-status">
-                                                <p class="u-role ">{{ user.roles }}</p>
+                                                <p class="u-role">
+                                                    <ng-container *ngFor="let role of user.roles; let i = index">
+                                                        {{ role }}
+                                                        <span *ngIf="i !== user.roles.length - 1">, </span>
+                                                      </ng-container>
+                                                  </p>
                                                 <p>Status: {{ user.disabled ? 'Active' : 'Inactive' }}</p>
                                             </div>
                                         </div>

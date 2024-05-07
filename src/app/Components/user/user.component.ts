@@ -14,12 +14,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    // const usersData = {
-    //   user1: { mail: "shalini@example.com", name: "Shalini", disabled: false, roles: ["Inventory View", "Design"] },
-    //   user2: { mail: "shima@example.com", name: "Shima", disabled: true, roles: ["Discount"] },
-    //   user3: { mail: "rishabh@example.com", name: "Rishabh", disabled: true, roles: ["Admin"] }
-    // };
-
+  
     const usersData = {
       "user1": {
         "mail": "shalini@example.com",
