@@ -17,18 +17,21 @@ export class UserComponent implements OnInit {
   
     const usersData = {
       "user1": {
+        "id": "user1",
         "mail": "shalini@example.com",
         "name": "Shalini",
         "disabled": false,
         "roles": ["Inventory View", "Design"]
       },
       "user2": {
+        "id": "user2",
         "mail": "shima@example.com",
         "name": "Shima",
         "disabled": true,
         "roles": ["Discount"]
       },
       "user3": {
+        "id": "user3", 
         "mail": "rishabh@example.com",
         "name": "Rishabh",
         "disabled": true,
@@ -36,8 +39,19 @@ export class UserComponent implements OnInit {
       }
     };
 
-    this.userService.uploadUsers(usersData);
+    // this.userService.uploadUsers(usersData);
 
+    this.userService.getUsers().subscribe(users => {
+      this.users = users;
+      console.log("chcek",this.users);
+    });
+
+    
+    this.fetchUsers();
+   
+  }
+
+  fetchUsers() {
     this.userService.getUsers().subscribe(users => {
       this.users = users;
     });
@@ -45,7 +59,15 @@ export class UserComponent implements OnInit {
 
   toggleDisabledStatus(user: User) {
     user.disabled = !user.disabled;
-    this.userService.updateUser(user);
+    this.userService.updateUser(user).then(() => {
+
+      this.fetchUsers();
+    }).catch(error => {
+      console.error("Error updating user: ", error);
+      user.disabled = !user.disabled;
+    });
+
+ 
   }
 
   toggleView(mode: 'grid' | 'list') {

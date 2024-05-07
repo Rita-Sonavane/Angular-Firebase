@@ -249,6 +249,10 @@ p {
         flex-direction: column;
     }
 
+    .user-card-grid {
+        margin: 20px;
+        max-width: none;
+    }
     .user-card {
         width: 90%;
         max-width: none;

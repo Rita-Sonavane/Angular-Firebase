@@ -19,8 +19,8 @@ export class UserService {
       return this.firestore.collection<User>('users').valueChanges();
     }
   
-    updateUser(user: User) {
-      this.firestore.collection('users').doc(user.id).update(user);
+    updateUser(user: User): Promise<void> {
+      return this.firestore.collection('users').doc(user.id).update(user);
     }
   
 }
